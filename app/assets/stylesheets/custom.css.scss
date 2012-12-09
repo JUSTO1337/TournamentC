@@ -15,23 +15,31 @@ overflow-y: scroll;
 }
 body {
 padding-top: 60px;
+background-color: black;
 }
 section {
 overflow: auto;
 }
 textarea {
 resize: vertical;
+
 }
 .center {
 text-align: center;
+background-color: #2a2a2a;
+color: white;
 }
 .center h1 {
 margin-bottom: 10px;
+color: white;
 }
+img{
 
+}
 /* typography */
 h1, h2, h3, h4, h5, h6 {
 line-height: 1;
+color:white;
 }
 h1 {
 font-size: 3em;
@@ -50,6 +58,8 @@ color: #999;
 p {
 font-size: 1.1em;
 line-height: 1.7em;
+color: white;
+text-align: center;
 }
 
 /* header */
@@ -74,13 +84,13 @@ footer {
 margin-top: 45px;
 padding-top: 5px;
 border-top: 1px solid #eaeaea;
-color: #999;
+color: white;
 }
 footer a {
-color: #555;
+color: white;
 }
 footer a:hover {
-color: #222;
+color: #999;
 }
 footer small {
 float: left;
@@ -139,7 +149,6 @@ height: auto;
 margin-bottom: 15px;
 @include box_sizing;
 }
-
 #error_explanation {
 color: #f00;
 ul {
@@ -151,7 +160,9 @@ margin: 0 0 18px 0;
 @extend .control-group;
 @extend .error;
 }
-
+label{
+color: white;
+}
 /* users index */
 .users {
 list-style: none;
@@ -163,6 +174,31 @@ border-top: 1px solid $grayMediumLight;
 &:last-child {
 border-bottom: 1px solid $grayMediumLight;
 }
+}
+}
+/* tournaments */
+.tournaments {
+list-style: none;
+margin: 10px 0 0 0;
+li {
+padding: 10px 0;
+border-top: 1px solid #e8e8e8;
+}
+}
+.content {
+display: block;
+}
+.timestamp {
+color: $grayLight;
+}
+.gravatar {
+float: left;
+margin-right: 10px;
+}
+aside {
+textarea {
+height: 100px;
+margin-bottom: 5px;
 }
 }
 

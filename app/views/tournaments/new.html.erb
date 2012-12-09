@@ -1,0 +1,18 @@
+<% provide(:title, 'New Tour') %>
+<h1>Create Tournament</h1>
+<div class="row">
+<div class="span6 offset3">
+<%= form_for(@tournament) do |f| %>
+<%= f.label :name %>
+<%= f.text_field :name %>
+<%= f.label :p_ucast, "Number of participants" %>
+<%= f.text_field :n_part %>
+<%= f.label :t_typ, "Type of tournament" %>
+<%= f.text_field :t_type %>
+<%= f.label :kategoria, "Sports category" %>
+<%= f.text_field :category %>
+<%= f.submit "Create tournament", class: "btn btn-large btn-primary" %>
+<% end %>
+
+</div>
+</div>

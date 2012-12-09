@@ -8,6 +8,8 @@ before_filter :admin_user, only: :destroy
 
   def show
 @user = User.find(params[:id])
+@tournaments = @user.tournaments.paginate(page: params[:page])
+
 end
 
   def new
@@ -19,7 +21,7 @@ end
 if @user.save
   sign_in @user
 
-  flash[:success] = "Welcome to the Sample App!"
+  flash[:success] = "Welcome to TCreator"
 
 redirect_to @user
 else
