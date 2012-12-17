@@ -1,0 +1,88 @@
+<script>
+function myFunction(index1,index2,index3)
+{
+  var x;
+  var y;
+  var z;
+  var r=prompt("Team 1");
+  var r1=prompt("Team 2");
+  if (r!=null && r1!=null)
+  {
+    if(parseInt(r) > parseInt(r1)){
+      x=r+":"+r1;
+      z=index3 + 1;
+      if(z <= 4){
+        y=document.getElementById(z).innerHTML;
+      }else{
+        y=document.getElementById("winner"+(z-5)).innerHTML;
+      }
+
+    }
+    else {
+      x=r1+":"+r;
+      z=index3 + 2;
+      if(z <= 4){
+        y=document.getElementById(z).innerHTML;
+      }else{
+        y=document.getElementById("winner"+(z-5)).innerHTML;
+      }
+    }
+  }
+  else
+  {
+    x="Error";
+    y="Error";
+  }
+  document.getElementById("databaza"+index1).innerHTML=x;
+  document.getElementById("winner"+index2).innerHTML=y;
+
+}
+</script>
+<% string = @tournament.parts %>
+<table summary="Tournament Bracket">
+  <tr>
+    <td><p id="1"><%= string.split("\n")[0]%></p>
+    </td>
+    <td rowspan="3"><p id="winner1">-</p></td>
+    <td rowspan="7"><p id="winner3">-</p></td>
+  </tr >
+  <tr>
+    <td align="right">
+      <% if current_user?(@tournament.user)%>
+      <a style="cursor: pointer;" onclick="myFunction('1','1',0)">Score:</a><b id = "databaza1"></b>
+      <% else %>
+      <a style="cursor: pointer;">Score:</a><b id = "databaza1"></b>
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+    <td><p id="2"><%= string.split("\n")[1]%></p></td>
+    <tr>
+      <td></td>
+      <td align="right">
+        <% if current_user?(@tournament.user) %>
+        <a style="cursor: pointer;" onclick="myFunction('3','3',5)">Score:</a><b id = "databaza3"></b>
+        <% else %>
+        <a style="cursor: pointer;">Score:</a><b id = "databaza1"></b>
+        <% end %>
+      </td>
+    </tr>
+  </tr>
+  <tr>
+    <td><p id="3"><%= string.split("\n")[2]%></p></td>
+    <td rowspan="3"><p id="winner2">-</p></td>
+  </tr>
+  <tr>
+    <td align="right">
+      <% if current_user?(@tournament.user) %>
+      <a style="cursor: pointer;" onclick="myFunction('2','2',2)">Score:</a><b id = "databaza2"></b>
+      <% else %>
+      <a style="cursor: pointer;">Score:</a><b id = "databaza1"></b>
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+    <td><p id="4"><%= string.split("\n")[3]%></p></td>
+  </tr>
+</table>
+

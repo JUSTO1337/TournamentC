@@ -1,0 +1,127 @@
+<script>
+function myFunction(index1,index2,index3)
+{
+  var x;
+  var y;
+  var z;
+  var r=prompt("Team 1");
+  var r1=prompt("Team 2");
+  if (r!=null && r1!=null)
+  {
+    if(parseInt(r) > parseInt(r1)){
+      x=r+":"+r1;
+      z=index3 + 1;
+      if(z <= 8){
+      y=document.getElementById(z).innerHTML;
+    }else{
+      y=document.getElementById("winner"+(z-9)).innerHTML;
+    }
+
+    }
+    else {
+      x=r1+":"+r;
+      z=index3 + 2;
+      if(z <= 8){
+      y=document.getElementById(z).innerHTML;
+      }else{
+      y=document.getElementById("winner"+(z-9)).innerHTML;
+    }
+    }
+  }
+  else
+  {
+    x="Error";
+    y="Error";
+  }
+  document.getElementById("databaza"+index1).innerHTML=x;
+  document.getElementById("winner"+index2).innerHTML=y;
+
+}
+</script>
+<% string = @tournament.parts %>
+<table summary="Tournament Bracket">
+ <tr>
+  <td><p id="1"><%= string.split("\n")[0]%></p></td>
+  <td rowspan="3"><p id="winner1">-</p></td>
+  <td rowspan="7"><p id="winner5">-</p></td>
+  <td rowspan="15"><p id="winner7">-</p></td>
+</tr>
+<tr>
+  <% if current_user?(@tournament.user)%>
+  <td align="right"><a style="cursor: pointer;" onclick="myFunction('1','1',0)">Score:</a><b id = "databaza1"></b></td>
+  <% else %>
+  <a style="cursor: pointer;">Score:</a><b id = "databaza1"></b>
+  <% end %>
+</tr>
+<tr>
+  <td><p id="2"><%= string.split("\n")[1]%></p></td>
+</tr>
+<tr>
+  <td></td>
+  <% if current_user?(@tournament.user)%>
+  <td align="right"><a style="cursor: pointer;" onclick="myFunction('5','5',9)">Score:</a><b id = "databaza5"></b></td>
+  <% else %>
+  <a style="cursor: pointer;">Score:</a><b id = "databaza5"></b>
+  <% end %>
+</tr>
+<tr>
+  <td><p id="3"><%= string.split("\n")[2]%></p></td>
+  <td rowspan="3"><p  id="winner2">-</p></td>
+</tr>
+<tr>
+  <% if current_user?(@tournament.user)%>
+  <td align="right"><a style="cursor: pointer;" onclick="myFunction('2','2',2)">Score:</a><b id = "databaza2"></b></td>
+  <% else %>
+      <a style="cursor: pointer;">Score:</a><b id = "databaza2"></b>
+      <% end %>
+</tr>
+<tr>
+  <td><p id="4"><%= string.split("\n")[3]%></p></td>
+</tr>
+<tr>
+  <td></td>
+  <td></td>
+  <% if current_user?(@tournament.user)%>
+  <td align="right"><a style="cursor: pointer;" onclick="myFunction('7','7',13)">Score:</a><b id = "databaza7"></b></td>
+  <% else %>
+      <a style="cursor: pointer;">Score:</a><b id = "databaza7"></b>
+      <% end %>
+</tr>
+<tr>
+  <td><p id="5"><%= string.split("\n")[4]%></p></td>
+  <td rowspan="3"><p id="winner3">-</p></td>
+  <td rowspan="7"><p id="winner6">-</p></td>
+</tr>
+<tr>
+  <% if current_user?(@tournament.user)%>
+  <td align="right"><a style="cursor: pointer;" onclick="myFunction('3','3',4)">Score:</a><b id = "databaza3"></b></td>
+  <% else %>
+      <a style="cursor: pointer;">Score:</a><b id = "databaza3"></b>
+      <% end %>
+</tr>
+<tr>
+  <td><p id="6"><%= string.split("\n")[5]%></p></td>
+</tr>
+<tr>
+  <td></td>
+  <% if current_user?(@tournament.user)%>
+  <td align="right"><a style="cursor: pointer;" onclick="myFunction('6','6',11)">Score:</a><b id = "databaza6"></b></td>
+  <% else %>
+      <a style="cursor: pointer;">Score:</a><b id = "databaza6"></b>
+      <% end %>
+</tr>
+<tr>
+  <td><p id="7"><%= string.split("\n")[6]%></p></td>
+  <td rowspan="3"><p id="winner4">-</p></td>
+</tr>
+<tr>
+  <% if current_user?(@tournament.user)%>
+ <td align="right"><a style="cursor: pointer;" onclick="myFunction('4','4',6)">Score:</a><b id = "databaza4"></b></td>
+ <% else %>
+      <a style="cursor: pointer;">Score:</a><b id = "databaza4"></b>
+      <% end %>
+</tr>
+<tr>
+  <td><p id="8"><%= string.split("\n")[7]%></p></td>
+</tr>
+</table>

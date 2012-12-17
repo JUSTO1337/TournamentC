@@ -7,17 +7,12 @@ class UsersController < ApplicationController
 
 
   def show
-<<<<<<< HEAD
 @user = User.find(params[:id])
 @tournaments = @user.tournaments.paginate(page: params[:page])
 
 end
-=======
-    @user = User.find(params[:id])
-  end
->>>>>>> 2b8dbfa4c988c31ac9cbc64eb779280f6f8a5386
 
-  def new
+    def new
     @user = User.new
 
   end
@@ -26,18 +21,16 @@ end
     if @user.save
       sign_in @user
 
-<<<<<<< HEAD
+
   flash[:success] = "Welcome to TCreator"
-=======
-      flash[:success] = "Welcome to the Sample App!"
->>>>>>> 2b8dbfa4c988c31ac9cbc64eb779280f6f8a5386
+
+
+
 
       redirect_to @user
     else
       render 'new'
     end
-  end
-  def edit
   end
   def update
     @user = User.find(params[:id])
@@ -59,7 +52,8 @@ end
   def index
     @users = User.paginate(page: params[:page])
 
-  end
+ end
+
   private
   def signed_in_user
     unless signed_in?

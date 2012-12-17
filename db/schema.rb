@@ -11,7 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121203205800) do
+ActiveRecord::Schema.define(:version => 20121217002721) do
+
+  create_table "matches", :force => true do |t|
+    t.string   "result"
+    t.integer  "tournament_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "matches", ["tournament_id", "created_at"], :name => "index_matches_on_tournament_id_and_created_at"
 
   create_table "microposts", :force => true do |t|
     t.string   "content"
@@ -22,6 +31,15 @@ ActiveRecord::Schema.define(:version => 20121203205800) do
 
   add_index "microposts", ["user_id", "created_at"], :name => "index_microposts_on_user_id_and_created_at"
 
+  create_table "participants", :force => true do |t|
+    t.string   "name"
+    t.integer  "tournament_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "participants", ["tournament_id"], :name => "index_participants_on_tournament_id"
+
   create_table "tournaments", :force => true do |t|
     t.string   "name"
     t.integer  "n_part"
@@ -30,6 +48,7 @@ ActiveRecord::Schema.define(:version => 20121203205800) do
     t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "parts"
   end
 
   add_index "tournaments", ["user_id", "created_at"], :name => "index_tournaments_on_user_id_and_created_at"

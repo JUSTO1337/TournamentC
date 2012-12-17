@@ -1,7 +1,9 @@
-<div class="center hero-unit">
 <% provide(:title, 'TShow') %>
-<h1>Show</h1>
-<p>
-There will be TOURNAMENT TREE
-</p>
-</div>
+      	<% if @tournament.n_part == 16 %>
+		<%= render 'tournaments/tournament16'%>
+            	<% elsif @tournament.n_part == 8 %>
+		<%= render 'tournaments/tournament8'%>
+	<% elsif @tournament.n_part == 4 %>
+		<%= render 'tournaments/tournament4'%>
+
+	<% end %>

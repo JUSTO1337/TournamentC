@@ -11,14 +11,12 @@
 
 class User < ActiveRecord::Base
   attr_accessible :email, :name, :password, :password_confirmation
-<<<<<<< HEAD
+
 has_secure_password
 has_many :microposts, dependent: :destroy
 has_many :tournaments, dependent: :destroy
-=======
-  has_secure_password
-  has_many :microposts, dependent: :destroy
->>>>>>> 2b8dbfa4c988c31ac9cbc64eb779280f6f8a5386
+
+
 
 
   before_save { |user| user.email = email.downcase }

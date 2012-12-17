@@ -5,6 +5,8 @@ SampleApp::Application.routes.draw do
 
   resources :tournaments
 
+  resources :participants
+
 
   root to: 'static_pages#home'
 

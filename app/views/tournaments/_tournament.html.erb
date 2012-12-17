@@ -1,4 +1,8 @@
 <li>
-<span class="name"><%= link_to tournament.name, tournament %></span>
+	<span class="name">
+		<%= link_to tournament.name, tournament %>
+            <% if current_user.admin? || current_user?(tournament.user) %>
+|           <%= link_to "delete", tournament, method: :delete, confirm: "You sure?" %>
+            <% end %>
+	</span>
 </li>
-
